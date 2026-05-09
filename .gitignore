@@ -1,0 +1,17 @@
+.idea/
+.vscode/
+*.iml
+
+logs/
+*.log
+target/
+build/
+
+.env
+.env.*
+!.env.example
+
+*.zip
+*.rar
+*.7z
+*.class
