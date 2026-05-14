@@ -11,6 +11,7 @@
 本仓库公开内容包括：
 
 - 项目整体介绍与技术栈说明
+- 可运行的 Vue 3 商家端演示前端（`merchant-frontend/`）
 - 商家后台核心业务闭环
 - 秒杀领券、批量发券、预约提醒等核心链路设计
 - Redis、RocketMQ、XXL-Job、bizlog-sdk 等技术方案复盘
@@ -46,7 +47,29 @@
 | 定时任务 | XXL-Job |
 | 鉴权与安全 | Sa-Token、RBAC、商户数据隔离 |
 | 工程化 | Maven、MapStruct、EasyExcel、bizlog-sdk |
+| 前端演示 | Vue 3、Vite、lucide-vue-next |
 | 扩展方案 | ShardingSphere 分库分表方案预留 |
+
+## 配套前端演示台
+
+仓库新增 `merchant-frontend/`，用于本地联调和面试现场展示。它不是完整商业 SaaS 前端，而是围绕商家服务后台核心链路做的可运行演示台：
+
+- 独立登录页，支持账号登录或粘贴 Apifox Token 后进入后台。
+- 模板管理：创建、查询、增发、结束优惠券模板。
+- 领券兑换：同步领取、异步兑换、兑换结果查询。
+- 结算中心：查询可用/不可用优惠券、计算优惠金额、锁定、取消、核销、退款。
+- 预约与批量：保留预约提醒和批量发券任务入口。
+- 压测摘要：展示本地 JMeter 压测指标，方便面试讲解。
+
+本地启动：
+
+```bash
+cd merchant-frontend
+npm install
+npm run dev
+```
+
+默认访问 `http://localhost:5173`，前端通过 Vite 代理将 `/api` 转发到本地 `http://localhost:10010` 后端。
 
 ## 核心亮点
 
